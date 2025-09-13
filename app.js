@@ -81,6 +81,12 @@ async function doFetch() {
   const PROXY_BASE = "https://tiny-cherry-4983.devil-ddd-03-cloudflare.workers.dev";
   const url = `${PROXY_BASE}/files/${encodeURIComponent(id)}`;
 
+  // --- Localhost mode (direct to VirusTotal, no Cloudflare Worker) ---
+  // Uncomment the below line and comment the above two lines if you only run this tool locally on your own machine.
+  // Note: This will NOT work when deployed to GitHub Pages because of CORS restrictions.
+  //
+  // const url = `https://www.virustotal.com/api/v3/files/${encodeURIComponent(id)}`;
+
   setStatus('Summoning JSON from the abyss…', 'ok');
   setBusy(true);
 
