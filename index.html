@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>VirusTotal JSON Downloader — VT Necromancer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+
+  <!-- SEO -->
+  <meta name="description" content="A static GUI to fetch VirusTotal API v3 file reports by hash and export JSON (.json/.js), with copy and printable summaries. GitHub Pages ready. BYO API key." />
+  <meta name="keywords" content="VirusTotal, JSON, GUI, GitHub Pages, API v3, hash, SHA-256, malware analysis, security" />
+  <!-- Canonical (update after deploy) -->
+  <link rel="canonical" href="https://Deb-Deep-Dutta.github.io/VirusTotalJsonDownloader/" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>VirusTotal JSON Downloader <span class="mutey">(aka VT Necromancer)</span></h1>
+      <p class="sub">Static GUI to fetch VirusTotal API v3 file reports by hash and export as <code>.json</code> or <code>.js</code>. Copy, download, or print summaries. BYO API key.</p>
+      <div class="badge-row">
+        <a class="badge" href="#" onclick="return false;">Static · No backend</a>
+        <a class="badge" href="#" onclick="return false;">BYO API key</a>
+        <a class="badge" href="#" onclick="return false;">GitHub Pages ready</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Controls -->
+      <section class="card">
+        <label for="apiKey">VirusTotal API Key (v3)</label>
+        <input id="apiKey" type="password" placeholder="VT_API_... (never stored)" autocomplete="off" />
+
+        <div class="row">
+          <div>
+            <label for="hash">File Hash (SHA-256, SHA-1, or MD5)</label>
+            <input id="hash" type="text" placeholder="e.g., 4086619351115ec6e5e2c82658...f30d0" />
+          </div>
+          <div>
+            <label for="ext">Download Extension</label>
+            <select id="ext" aria-label="Download extension">
+              <option value="json" selected>.json</option>
+              <option value="js">.js</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="fetchBtn" title="Fetch JSON from VirusTotal">Fetch JSON</button>
+          <button class="secondary" id="openGuiBtn" title="Open VT GUI in a new tab">Open in VT GUI</button>
+          <button class="ghost" id="clearBtn" title="Clear inputs and output">Clear</button>
+        </div>
+
+        <div id="status" class="meta status" aria-live="polite">
+          Waiting for a hash and a key like a demon waiting for a Latin chant.
+        </div>
+      </section>
+
+      <!-- Output -->
+      <section class="card">
+        <div class="actions">
+          <button id="copyBtn" class="secondary" disabled>Copy Full JSON</button>
+          <button id="downloadBtn" disabled>Download</button>
+          <button id="downloadGzipBtn" class="secondary" disabled title="Gzip if supported; falls back automatically">Download (gzip)</button>
+          <button id="printSummaryBtn" class="ghost" disabled>Print Summary</button>
+        </div>
+
+        <div id="summary" class="summary"></div>
+        <pre id="jsonOut" aria-live="polite"></pre>
+        <div id="metaOut" class="meta"></div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      Not affiliated with VirusTotal. This static page sends your API key only to VirusTotal via <code>fetch()</code>. We store nothing—no secrets, no feelings.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
