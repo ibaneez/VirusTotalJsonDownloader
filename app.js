@@ -74,11 +74,13 @@ async function doFetch() {
   if (!key) return setStatus('Enter your VirusTotal API key. I’m not your sugar daddy.', 'bad');
   if (!id) return setStatus('Enter a hash, necromancer.', 'bad');
 
-  // Minimal hash sanity check
   const looksHex = /^[a-fA-F0-9]{32,64}$/.test(id);
   if (!looksHex) setStatus('Hash looks funky. VT might still accept it—let’s roll the bones.', 'warn');
 
-  const url = `https://www.virustotal.com/api/v3/files/${encodeURIComponent(id)}`;
+  // 👉 use your Cloudflare Worker URL
+  const PROXY_BASE = "https://tiny-cherry-4983.devil-ddd-03-cloudflare.workers.dev";
+  const url = `${PROXY_BASE}/files/${encodeURIComponent(id)}`;
+
   setStatus('Summoning JSON from the abyss…', 'ok');
   setBusy(true);
 
@@ -98,12 +100,10 @@ async function doFetch() {
       throw new Error(`VT error ${resp.status}: ${msg}`);
     }
 
-    // Pretty print
     const pretty = JSON.stringify(body, null, 2);
     jsonOut.textContent = pretty;
     setActionState(true);
 
-    // Build meta + summary
     const harmless = get(body, ['data','attributes','last_analysis_stats','harmless']);
     const malicious = get(body, ['data','attributes','last_analysis_stats','malicious']);
     const suspicious = get(body, ['data','attributes','last_analysis_stats','suspicious']);
@@ -128,7 +128,6 @@ async function doFetch() {
       <div class="mutey">${rate}</div>
     `;
 
-    // Summary card
     const ts = (unix) => (unix ? new Date(unix * 1000).toLocaleString() : 'n/a');
     summaryEl.innerHTML = `
       <div><strong>Summary</strong></div>
@@ -157,7 +156,6 @@ async function doFetch() {
 
 function listNotables(body) {
   const results = get(body, ['data','attributes','last_analysis_results']) || {};
-  // Sort engines by category severity (malicious > suspicious > others) and take up to 8 names
   const priority = { malicious: 2, suspicious: 1 };
   return Object.entries(results)
     .filter(([,v]) => v && (v.category === 'malicious' || v.category === 'suspicious'))
@@ -192,9 +190,7 @@ async function downloadJson(useGzip) {
       blob = new Blob([gzBlob], { type: 'application/gzip' });
       saveBlob(blob, `${baseName}.gz`);
       return setStatus(`Downloaded ${baseName}.gz (gzip). Freshly vacuum-sealed evil.`, 'ok');
-    } catch (e) {
-      // fall back silently
-    }
+    } catch (e) {}
   }
   const mime = ext === 'js' ? 'application/javascript;charset=utf-8' : 'application/json;charset=utf-8';
   blob = new Blob([text], { type: mime });
@@ -240,7 +236,7 @@ function printSummary() {
         <hr />
         <div class="summary">${sum}</div>
         <hr />
-        <p>Printed from VT Necromancer — <em>because sometimes you need a hardcopy for the inquest.</em></p>
+        <p>Printed from VirusTotal JSON Downloader — <em>because sometimes you need a hardcopy for the inquest.</em></p>
         <script>window.onload = () => setTimeout(() => window.print(), 100);</script>
       </body>
     </html>

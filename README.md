@@ -5,6 +5,7 @@ Static GUI to fetch VirusTotal file reports (JSON) by hash. Copy, download (.jso
 [![License](https://img.shields.io/badge/license-MIT-informational)](#-license)
 [![Stars](https://img.shields.io/github/stars/Deb-Deep-Dutta/VirusTotalJsonDownloader?style=social)](https://github.com/Deb-Deep-Dutta/VirusTotalJsonDownloader/stargazers)
 [![Live Demo](https://img.shields.io/badge/Github%20Pages-Live-1f6feb)](https://deb-deep-dutta.github.io/VirusTotalJsonDownloader/)
+
 > ⚡ If this repo saved you from clicking a suspicious `DefinitelyNotMalware.exe`,  
 > **please ⭐ star the repo** — it keeps the demons at bay.
 
@@ -36,10 +37,10 @@ Static GUI to fetch VirusTotal file reports (JSON) by hash. Copy, download (.jso
 ## 🚀 Quick Start
 
 1. Clone the repo:
-   ```bash
+```bash
    git clone https://github.com/Deb-Deep-Dutta/VirusTotalJsonDownloader.git
    cd VirusTotalJsonDownloader
-
+```
 2. Open index.html in your browser (or serve locally).
 
 
@@ -63,9 +64,7 @@ Print a tidy summary
 🌐 Deploy on GitHub Pages
 
 1. Push this repo to GitHub:
-
 Suggested repo name: VirusTotalJsonDownloader
-
 
 
 2. Go to Settings → Pages:
@@ -79,7 +78,8 @@ Branch: main (and /root)
 3. Wait for Pages to publish.
 
 
-4. Open your live URL.
+4. Open your live URL:
+👉 https://deb-deep-dutta.github.io/VirusTotalJsonDownloader/
 
 
 
@@ -87,6 +87,54 @@ Branch: main (and /root)
 No localStorage, no cookies, no backend.
 Cloners must use their own key — your secrets remain yours.
 
+
+
+
+---
+
+🔐 Cloudflare Worker Proxy (required for GitHub Pages)
+
+VirusTotal’s API blocks direct browser calls from GitHub Pages (CORS).
+This repo works live because it uses my own Cloudflare Worker, locked to my domain:
+
+👉 https://deb-deep-dutta.github.io/VirusTotalJsonDownloader/
+
+If you clone or fork this repo, you must set up your own Worker and update app.js.
+
+How to set up your Worker
+
+1. Log in to Cloudflare Dashboard → Workers & Pages → Create Worker → Deploy → then Edit code.
+
+
+2. Replace the default code with the example in docs/proxy-worker-example.js.
+
+
+3. Under Settings → Variables, add:
+
+ALLOWED_ORIGIN = https://YOURNAME.github.io
+
+ALLOWED_REFERER_PREFIX = https://YOURNAME.github.io/VirusTotalJsonDownloader/
+(replace YOURNAME with your GitHub username).
+
+
+
+4. Save and Deploy. Copy your Worker URL (e.g. https://something.workers.dev).
+
+
+5. In app.js, set:
+
+const PROXY_BASE = "https://something.workers.dev";
+const url = `${PROXY_BASE}/files/${encodeURIComponent(id)}`;
+
+
+
+Why this is needed
+
+My Worker is locked to https://deb-deep-dutta.github.io/VirusTotalJsonDownloader/.
+
+Forks/clones will get 403 Origin not allowed.
+
+Everyone must run their own Worker (and their own VirusTotal API key).
 
 
 
@@ -112,10 +160,9 @@ Official VirusTotal API Docs
 
 ⚠️ Notes
 
-CORS: Tool works as long as VirusTotal allows browser CORS.
-If they block it, you’ll need a tiny private proxy (e.g., Cloudflare Worker) that injects your API key.
+CORS: This project relies on a Cloudflare Worker proxy for GitHub Pages.
 
-Rate limits: Free API keys are limited. The UI shows quota info when headers are present.
+Rate limits: Free API keys are limited. The UI shows quota info if headers are present.
 
 
 
