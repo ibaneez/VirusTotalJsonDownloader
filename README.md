@@ -3,8 +3,8 @@ Static GUI to fetch VirusTotal file reports (JSON) by hash. Copy, download (.jso
 
 [![Deploy on GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-ready-1f6feb)](#-deploy)
 [![License](https://img.shields.io/badge/license-MIT-informational)](#-license)
-[![Stars](https://img.shields.io/github/stars/yourname/VirusTotalJsonDownloader?style=social)](https://github.com/yourname/VirusTotalJsonDownloader/stargazers)
-
+[![Stars](https://img.shields.io/github/stars/Deb-Deep-Dutta/VirusTotalJsonDownloader?style=social)](https://github.com/Deb-Deep-Dutta/VirusTotalJsonDownloader/stargazers)
+[![Live Demo](https://img.shields.io/badge/Github%20Pages-Live-1f6feb)](https://deb-deep-dutta.github.io/VirusTotalJsonDownloader/)
 > ⚡ If this repo saved you from clicking a suspicious `DefinitelyNotMalware.exe`,  
 > **please ⭐ star the repo** — it keeps the demons at bay.
 
@@ -37,7 +37,7 @@ Static GUI to fetch VirusTotal file reports (JSON) by hash. Copy, download (.jso
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/yourname/VirusTotalJsonDownloader.git
+   git clone https://github.com/Deb-Deep-Dutta/VirusTotalJsonDownloader.git
    cd VirusTotalJsonDownloader
 
 2. Open index.html in your browser (or serve locally).
@@ -161,13 +161,5 @@ star the repo ⭐ — validation is the only thing keeping this project alive.
 
 Not affiliated with VirusTotal. This is a third-party GUI client for their public API.
 Use responsibly; don’t abuse the API or I’ll haunt your printer.
-
----
-
-🔑 changes I made for SEO consistency:  
-- top line = identical to GitHub repo description  
-- first paragraph repeats: **VirusTotal / JSON / GUI / GitHub Pages / API key**  
-- screenshot alt text updated with keywords  
-- headings like **VirusTotal API Reference** = keyword bait  
 
 ---
